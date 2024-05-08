@@ -9,13 +9,10 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/workers")
 public class WorkerRestController {
 
     private final WorkerService workerService;
@@ -25,9 +22,16 @@ public class WorkerRestController {
         this.workerService = workerService;
     }
 
-    @PostMapping("/workers")
+
+    @GetMapping("/{workerId}")
+    public ResponseEntity<WorkerDTOResponse> getWorkerById(@PathVariable int workerId){
+        Worker worker = workerService.getWorkerById(workerId);
+        return ResponseEntity.ok(WorkerMapper.workerToDTOResponse(worker));
+    }
+
+    @PostMapping("")
     public ResponseEntity<WorkerDTOResponse> createWorker(@Valid @RequestBody WorkerDTO workerDTO){
-        Worker created = workerService.create(workerDTO);
+        Worker created = workerService.create(WorkerMapper.dtoToWorker(workerDTO));
         return ResponseEntity.status(HttpStatus.CREATED).body(WorkerMapper.workerToDTOResponse(created));
     }
 }

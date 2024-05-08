@@ -43,4 +43,16 @@ public class WorkerRestController {
         Worker created = workerService.create(WorkerMapper.dtoToWorker(workerDTO));
         return ResponseEntity.status(HttpStatus.CREATED).body(WorkerMapper.workerToDTOResponse(created));
     }
+
+    @PutMapping("/{workerId}")
+    public ResponseEntity<WorkerDTOResponse> updateWorkerById(@RequestBody WorkerDTO workerDTO, @PathVariable int workerId){
+        Worker update = workerService.updateWorkerById(workerDTO, workerId);
+        return ResponseEntity.ok(WorkerMapper.workerToDTOResponse(update));
+    }
+
+    @DeleteMapping("/{workerId}")
+    public ResponseEntity<Void> deleteWorkerById(@PathVariable int workerId){
+        workerService.deleteWorkerById(workerId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

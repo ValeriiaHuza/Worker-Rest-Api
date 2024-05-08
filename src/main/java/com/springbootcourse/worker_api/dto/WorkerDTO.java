@@ -23,9 +23,9 @@ public class WorkerDTO {
     private String firstName;
     @NotBlank(message = "Last name is required!")
     private String lastName;
-    @Past(message = "Birthday should be in the past!")
+    @Past(message = "Birthday date should be in the past!")
     private LocalDate birthday;
-    @Email(message = "Email is not valid!")
+    @Email(regexp = "^[\\w-._]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email is not valid!")
     private String email;
     private String position;
     @ValidPhoneNumbers()

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "workers")
 public class Worker {
     @Id
@@ -34,8 +36,7 @@ public class Worker {
     @Column(name = "\"position\"", length = 100)
     private String position;
 
-    @OneToMany(mappedBy = "worker",
-    cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "worker", cascade = CascadeType.ALL)
     private Set<PhoneNumber> phoneNumbers = new LinkedHashSet<>();
 
 }

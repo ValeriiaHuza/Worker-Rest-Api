@@ -10,7 +10,7 @@ public interface WorkerService {
 
     Worker create(Worker worker);
     Worker getWorkerById(Integer id);
-//    List<Worker> getWorkersList();
+    List<Worker> getWorkersList();
 //    Worker updateWorkerById(Worker worker, Integer id);
 //    void deleteWorkerById(Integer id);
 

@@ -11,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api/workers")
 public class WorkerRestController {
@@ -23,13 +26,19 @@ public class WorkerRestController {
     }
 
 
+    @GetMapping
+    public ResponseEntity<List<WorkerDTOResponse>> getWorkersList(){
+        List<Worker> workers = workerService.getWorkersList();
+        return ResponseEntity.ok(workers.stream().map(WorkerMapper::workerToDTOResponse).collect(Collectors.toList()));
+    }
+
     @GetMapping("/{workerId}")
     public ResponseEntity<WorkerDTOResponse> getWorkerById(@PathVariable int workerId){
         Worker worker = workerService.getWorkerById(workerId);
         return ResponseEntity.ok(WorkerMapper.workerToDTOResponse(worker));
     }
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<WorkerDTOResponse> createWorker(@Valid @RequestBody WorkerDTO workerDTO){
         Worker created = workerService.create(WorkerMapper.dtoToWorker(workerDTO));
         return ResponseEntity.status(HttpStatus.CREATED).body(WorkerMapper.workerToDTOResponse(created));

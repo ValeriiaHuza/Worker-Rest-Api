@@ -1,10 +1,8 @@
 package com.springbootcourse.worker_api.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
@@ -13,7 +11,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@ToString
 @Table(name = "workers")
 public class Worker {
     @Id

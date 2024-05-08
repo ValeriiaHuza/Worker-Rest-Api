@@ -1,6 +1,5 @@
 package com.springbootcourse.worker_api.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;

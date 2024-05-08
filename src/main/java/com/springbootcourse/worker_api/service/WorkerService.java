@@ -1,7 +1,6 @@
 package com.springbootcourse.worker_api.service;
 
 import com.springbootcourse.worker_api.dto.WorkerDTO;
-import com.springbootcourse.worker_api.dto.WorkerDTOResponse;
 import com.springbootcourse.worker_api.model.Worker;
 
 import java.util.List;

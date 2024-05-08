@@ -1,9 +1,7 @@
 package com.springbootcourse.worker_api.service;
 
 import com.springbootcourse.worker_api.dto.WorkerDTO;
-import com.springbootcourse.worker_api.dto.WorkerDTOResponse;
 import com.springbootcourse.worker_api.error.WorkerNotFoundException;
-import com.springbootcourse.worker_api.mapper.WorkerMapper;
 import com.springbootcourse.worker_api.model.PhoneNumber;
 import com.springbootcourse.worker_api.model.Worker;
 import com.springbootcourse.worker_api.repository.WorkerRepository;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -61,8 +58,6 @@ public class WorkerServiceImpl implements WorkerService{
         Worker updateWorker = getWorkerById(id);
         
         validateWorker(updateWorker, newWorker);
-
-        System.out.println(updateWorker.toString());
         
         return workerRepository.save(updateWorker);
     }

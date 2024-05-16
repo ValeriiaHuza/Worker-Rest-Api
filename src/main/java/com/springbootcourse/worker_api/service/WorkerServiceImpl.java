@@ -6,6 +6,7 @@ import com.springbootcourse.worker_api.model.PhoneNumber;
 import com.springbootcourse.worker_api.model.Worker;
 import com.springbootcourse.worker_api.repository.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -48,9 +49,28 @@ public class WorkerServiceImpl implements WorkerService{
     }
 
     @Override
-    public List<Worker> getWorkersList() {
-        return workerRepository.findAll();
+    public List<Worker> getWorkersList(String firstName, String lastName, LocalDate birthday, String email, String position) {
+        Specification<Worker> spec = Specification.where(null);
+
+        if (firstName != null) {
+            spec = spec.and(WorkerSpecifications.hasFirstName(firstName));
+        }
+        if (lastName != null) {
+            spec = spec.and(WorkerSpecifications.hasLastName(lastName));
+        }
+        if (birthday != null) {
+            spec = spec.and(WorkerSpecifications.hasBirthday(birthday));
+        }
+        if (email != null) {
+            spec = spec.and(WorkerSpecifications.hasEmail(email));
+        }
+        if (position != null) {
+            spec = spec.and(WorkerSpecifications.hasPosition(position));
+        }
+
+        return workerRepository.findAll(spec);
     }
+
 
     @Override
     public Worker updateWorkerById(WorkerDTO newWorker, Integer id) {
@@ -66,6 +86,7 @@ public class WorkerServiceImpl implements WorkerService{
     public void deleteWorkerById(Integer id) {
         workerRepository.deleteById(id);
     }
+
 
     private void validateWorker(Worker updateWorker, WorkerDTO newWorker) {
 

@@ -26,6 +26,6 @@ public class WorkerSpecifications {
         }
 
         public static Specification<Worker> hasPosition(String position) {
-            return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("\"position\""), position);
+            return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("positionJob"), position);
         }
 }

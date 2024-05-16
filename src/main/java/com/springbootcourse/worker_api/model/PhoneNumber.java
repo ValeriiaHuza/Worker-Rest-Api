@@ -2,11 +2,13 @@ package com.springbootcourse.worker_api.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "phone_numbers")
 public class PhoneNumber {
     @Id
@@ -21,4 +23,7 @@ public class PhoneNumber {
     @Column(name = "phone_number", nullable = false, length = 20)
     private String phoneNumber;
 
+    public PhoneNumber(String number) {
+        this.phoneNumber = number;
+    }
 }

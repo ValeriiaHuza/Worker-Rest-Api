@@ -127,8 +127,8 @@ public class WorkerServiceImpl implements WorkerService{
             }
         }
 
-        if (newWorker.getPosition() != null) {
-            updateWorker.setPosition(newWorker.getPosition());
+        if (newWorker.getPositionJob() != null) {
+            updateWorker.setPositionJob(newWorker.getPositionJob());
         }
 
         if (newWorker.getPhoneNumbers() != null) {

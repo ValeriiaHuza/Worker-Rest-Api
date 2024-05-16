@@ -6,7 +6,6 @@ import com.springbootcourse.worker_api.mapper.WorkerMapper;
 import com.springbootcourse.worker_api.model.Worker;
 import com.springbootcourse.worker_api.service.WorkerService;
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +32,8 @@ public class WorkerRestController {
                                                                   @RequestParam(required = false) String lastName,
                                                                   @RequestParam(required = false) LocalDate birthday,
                                                                   @RequestParam(required = false) String email,
-                                                                  @RequestParam(required = false) String position){
-        List<Worker> workers = workerService.getWorkersList(firstName, lastName, birthday, email, position);
+                                                                  @RequestParam(required = false) String positionJob){
+        List<Worker> workers = workerService.getWorkersList(firstName, lastName, birthday, email, positionJob);
 
         return ResponseEntity.ok(workers.stream().map(WorkerMapper::workerToDTOResponse).collect(Collectors.toList()));
     }

@@ -30,8 +30,8 @@ public class Worker {
     @Column(name = "email", length = 100)
     private String email;
 
-    @Column(name = "\"position\"", length = 100)
-    private String position;
+    @Column(name = "position_job", length = 100)
+    private String positionJob;
 
     @OneToMany(mappedBy = "worker", cascade = CascadeType.ALL)
     private Set<PhoneNumber> phoneNumbers = new LinkedHashSet<>();

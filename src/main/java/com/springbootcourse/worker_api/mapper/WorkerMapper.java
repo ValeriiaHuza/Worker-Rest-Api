@@ -15,7 +15,7 @@ public class WorkerMapper {
                 .lastName(worker.getLastName())
                 .birthday(worker.getBirthday())
                 .email(worker.getEmail())
-                .position(worker.getPosition())
+                .positionJob(worker.getPositionJob())
                 .phoneNumbers(worker.getPhoneNumbers().stream()
                         .map(PhoneNumber::getPhoneNumber)
                         .collect(Collectors.toSet()))
@@ -29,7 +29,7 @@ public class WorkerMapper {
                 .lastName(worker.getLastName())
                 .birthday(worker.getBirthday())
                 .email(worker.getEmail())
-                .position(worker.getPosition())
+                .positionJob(worker.getPositionJob())
                 .phoneNumbers(worker.getPhoneNumbers().stream()
                         .map(PhoneNumber::getPhoneNumber)
                         .collect(Collectors.toSet()))
@@ -42,7 +42,7 @@ public class WorkerMapper {
         worker.setLastName(workerDTO.getLastName());
         worker.setBirthday(workerDTO.getBirthday());
         worker.setEmail(workerDTO.getEmail());
-        worker.setPosition(workerDTO.getPosition());
+        worker.setPositionJob(workerDTO.getPositionJob());
         if (workerDTO.getPhoneNumbers() != null) {
             worker.setPhoneNumbers(workerDTO.getPhoneNumbers().stream()
                     .map(phoneNumber -> {

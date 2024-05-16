@@ -84,18 +84,16 @@ The **`Worker`** entity represents a worker in the system.
 The **`PhoneNumber`** entity represents a phone number associated with a worker.
 
 - ID:
-    - Type: Integer
-    - Description: Unique identifier for the phone number.
-
+  - Type: Integer
+  - Description: Unique identifier for the phone number.
 - Worker Id:
-    - Type: Integer
-    - Description: The worker id to whom this phone number belongs.
-
+  - Type: Integer
+  - Description: The worker id to whom this phone number belongs.
 - Phone Number:
-    - Type: String
-    - Constraints:
-        - Required, not blank
-        - Maximum length: 20 characters
+  - Type: String
+  - Constraints:
+    - Required, not blank
+    - Maximum length: 20 characters
 
 ## Rest API
 

@@ -1,0 +1,50 @@
+-- Create a table for worker details
+CREATE TABLE workers (
+    worker_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    birthday DATE,
+    email VARCHAR(100) UNIQUE,
+    position_job VARCHAR(100)
+);
+
+-- Create a table for storing multiple phone numbers for workers
+CREATE TABLE phone_numbers (
+    id SERIAL PRIMARY KEY,
+    worker_id INT NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
+    CONSTRAINT fk_worker
+        FOREIGN KEY(worker_id)
+        REFERENCES workers(worker_id)
+        ON DELETE CASCADE
+	    ON UPDATE CASCADE
+);
+
+-- Insert workers
+
+INSERT INTO workers (first_name, last_name, birthday, email, position_job)
+VALUES
+('John', 'Doe', '1980-01-15', 'john.doe@example.com', 'Manager'),
+('Jane', 'Smith', '1985-07-23', 'jane.smith@example.com', 'Developer'),
+('Alice', 'Johnson', '1990-03-05', 'alice.johnson@example.com', 'Analyst'),
+('Bob', 'Brown', '1975-09-12', 'bob.brown@example.com', 'Designer'),
+('Charlie', 'Davis', '1992-11-30', 'charlie.davis@example.com', 'Engineer'),
+('Diana', 'Miller', '1988-06-17', 'diana.miller@example.com', 'Accountant'),
+('Ethan', 'Wilson', '1993-12-24', 'ethan.wilson@example.com', 'HR'),
+('Grace', 'Moore', '1995-02-19', 'grace.moore@example.com', 'Sales Manager'),
+('Henry', 'Taylor', '1979-04-28', 'henry.taylor@example.com', 'Operations Manager'),
+('Isla', 'Anderson', '1991-05-16', 'isla.anderson@example.com', 'Marketing Manager');
+
+-- Insert phone numbers for each worker
+INSERT INTO phone_numbers (worker_id, phone_number)
+VALUES
+(1, '+12345678901'),
+(1, '+23456789012'),
+(3, '+34567890123'),
+(2, '+45678901234'),
+(5, '+56789012345'),
+(6, '+67890123456'),
+(7, '+78901234567'),
+(8, '+89012345678'),
+(9, '+90123456789'),
+(10, '+10123456789');

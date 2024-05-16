@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,8 +28,13 @@ public class WorkerRestController {
 
 
     @GetMapping
-    public ResponseEntity<List<WorkerDTOResponse>> getWorkersList(){
-        List<Worker> workers = workerService.getWorkersList();
+    public ResponseEntity<List<WorkerDTOResponse>> getWorkersList(@RequestParam(required = false) String firstName,
+                                                                  @RequestParam(required = false) String lastName,
+                                                                  @RequestParam(required = false) LocalDate birthday,
+                                                                  @RequestParam(required = false) String email,
+                                                                  @RequestParam(required = false) String positionJob){
+        List<Worker> workers = workerService.getWorkersList(firstName, lastName, birthday, email, positionJob);
+
         return ResponseEntity.ok(workers.stream().map(WorkerMapper::workerToDTOResponse).collect(Collectors.toList()));
     }
 

@@ -16,4 +16,11 @@ public class WorkerDTOResponse extends WorkerDTO{
         super(firstName, lastName, birthday, email, position, phoneNumbers);
         this.id = id;
     }
+
+    public WorkerDTOResponse(String firstName, String lastName, LocalDate birthday, String email, String position) {
+        super(firstName, lastName, birthday, email, position);
+        this.id = 0;
+    }
+
+
 }

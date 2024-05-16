@@ -26,7 +26,15 @@ public class WorkerDTO {
     private LocalDate birthday;
     @Email(regexp = "^[\\w-._]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email is not valid!")
     private String email;
-    private String position;
+    private String positionJob;
     @ValidPhoneNumbers()
     private Set<String> phoneNumbers;
+
+    public WorkerDTO(String firstName, String lastName, LocalDate birthday, String email, String position) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.email = email;
+        this.positionJob = position;
+    }
 }
